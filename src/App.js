@@ -47,8 +47,19 @@ const uiSchema = {
 };
 
 function App() {
-  const handleSubmit = ({ formData }) => {
-    alert("Dữ liệu gửi đi: " + JSON.stringify(formData, null, 2));
+  const handleSubmit = async ({ formData }) => {
+    try {
+      const response = await fetch("http://localhost:5000/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+      alert(data.message);
+    } catch (error) {
+      console.error("Lỗi khi gửi dữ liệu:", error);
+    }
   };
 
   return (
