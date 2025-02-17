@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
   gender: String,
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("DATA", userSchema, 'DATA');
 
 // API nhận dữ liệu từ frontend
 app.post("/submit", async (req, res) => {
